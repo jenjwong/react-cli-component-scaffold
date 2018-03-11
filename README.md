@@ -1,4 +1,4 @@
-Create React components and containers in seconds using react-component-scaffold's command line interface.
+Bootstrap React components and containers in seconds using react-component-scaffold's command line interface.
 
 ## Getting Started
 
@@ -27,4 +27,4 @@ CroissantContainer
     ├── CroissantContainer.spec.js
 
 ```
-You can customize react-component-scaffold by cloning the repo modifying templates.js and running `npm link`.
+Customize react-component-scaffold by cloning the repo modifying templates.js and running `npm link`.
