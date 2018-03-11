@@ -16,16 +16,16 @@ const {
   containerTestTemplate
 } = require("./templates.js");
 
-function component(jsxName, scssName) {
+function component(jsxName) {
   exec(`mkdir ${basePath}/knowledge-web/src/app/components/${jsxName}`, () => {
-    makeComponentFiles(jsxName, scssName);
+    makeComponentFiles(jsxName);
   });
 }
 
-function makeComponentFiles(jsxName, scssName) {
+function makeComponentFiles(jsxName) {
   fs.writeFileSync(
     `${basePath}/knowledge-web/src/app/components/${jsxName}/${jsxName}.jsx`,
-    componentTemplate(jsxName, scssName),
+    componentTemplate(jsxName),
     "utf8"
   );
   fs.writeFileSync(
@@ -34,13 +34,13 @@ function makeComponentFiles(jsxName, scssName) {
     "utf8"
   );
   fs.writeFileSync(
-    `${basePath}/knowledge-web/src/app/components/${jsxName}/${scssName}.scss`,
-    scssTemplate(scssName),
+    `${basePath}/knowledge-web/src/app/components/${jsxName}/${jsxName}.scss`,
+    scssTemplate(jsxName),
     "utf8"
   );
   fs.writeFileSync(
     `${basePath}/knowledge-web/src/app/components/${jsxName}/index.js`,
-    indexTemplate(jsxName, scssName),
+    indexTemplate(jsxName),
     "utf8"
   );
 }

@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 var shell = require("shelljs");
 
-const [, , scaffoldType, jsxName, scssName] = process.argv;
+const [, , scaffoldType, jsxName] = process.argv;
 
 const { component, container } = require("./helpers.js");
 
@@ -10,6 +10,6 @@ const createBoilerPlate = {
   container
 };
 
-createBoilerPlate[scaffoldType](jsxName, scssName);
+createBoilerPlate[scaffoldType](jsxName);
 
 shell.echo(`${jsxName} ${scaffoldType} created!`);

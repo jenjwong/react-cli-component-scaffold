@@ -1,6 +1,5 @@
-const componentTemplate = (jsxName, scssName) => `
-// @flow
-import styles from './${scssName}.scss';
+const componentTemplate = (jsxName) => `// @flow
+import styles from './${jsxName}.scss';
 
 type Props = {
 //   fillInProps: any
@@ -9,16 +8,16 @@ type Props = {
 @cssModule(styles)
 export default class ${jsxName} extends React.PureComponent<Props> {
   render() {
-    return <div styleName="${scssName}">${jsxName} Component</div>;
+    return <div styleName="${jsxName}">${jsxName} Component</div>;
   }
 }
 
 `;
 
-const scssTemplate = scssName => `
+const scssTemplate = jsxName => `@import '~sass-mq';
 @import '~styles/shared';
-@import '~sass-mq';
-.${scssName} {
+
+.${jsxName} {
   border: solid blue 1px;
 }
 
@@ -26,15 +25,13 @@ const scssTemplate = scssName => `
 
 `;
 
-const indexTemplate = jsxName => `
-import ${jsxName} from './${jsxName}';
+const indexTemplate = jsxName => `import ${jsxName} from './${jsxName}';
 
 export default ${jsxName};
 
 `;
 
-const componentTestTemplate = jsxName => `
-import {makeShallowRender} from 'test/helpers/testHelper';
+const componentTestTemplate = jsxName => `import {makeShallowRender} from 'test/helpers/testHelper';
 import ${jsxName} from './${jsxName}';
 
 const shallow${jsxName} = makeShallowRender(${jsxName});
@@ -51,12 +48,23 @@ describe('<${jsxName} />', () => {
 
   //   expect(wrapper.find('[className*="tag"]').text()).toBe('react');
   // });
+
+  // it('renders a li for every entry in ${jsxName} list', () => {
+  //   const wrapper = shallowSearchNoResultsFound();
+
+  //   expect(wrapper.find('li').length).toEqual(tips.length);
+  // });
+
+  // it('redirects to correct location', () => {
+  //   const wrapper = shallowSearchNoResultsFound();
+
+  //   expect(wrapper.find(Link).prop('to')).toEqual('/questions/new');
+  // });
 });
 
 `;
 
-const containerTemplate = jsxName => `
-// @flow
+const containerTemplate = jsxName => `// @flow
 
 import {connect} from 'react-redux';
 // import ${jsxName} from 'components/${jsxName}';
