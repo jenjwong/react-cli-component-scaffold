@@ -43,10 +43,22 @@ describe('<${jsxName} />', () => {
     expect(shallow${jsxName}.bind(null, mockProps)).not.toThrow();
   });
 
+  // describe('<${jsxName} />', () => {
+  //   it('renders <${jsxName} />', () => {
+  //     expect(${jsxName}).not.toThrow();
+  //   });
+  // });
+
+  // it('renders fillMeIn!', () => {
+  //   const wrapper = shallow${jsxName}(mockProps);
+
+  //   expect(wrapper.find('fillMeIn!)).toBePresent();
+  // });
+
   // it('renders the correct value', () => {
   //   const wrapper = shallow${jsxName}(mockProps);
 
-  //   expect(wrapper.find('[className*="tag"]').text()).toBe('react');
+  //   expect(wrapper.find('[className*="fillMeIn!"]').text()).toBe('fillMeIn!');
   // });
 
   // it('renders a li for every entry in ${jsxName} list', () => {
@@ -59,6 +71,18 @@ describe('<${jsxName} />', () => {
   //   const wrapper = shallowSearchNoResultsFound();
 
   //   expect(wrapper.find(Link).prop('to')).toEqual('/questions/new');
+  // });
+
+  // it('redirects to correct page on button click', () => {
+  //   const mockProps = {
+  //     history: {
+  //       push: jest.fn()
+  //     }
+  //   };
+  //   const wrapper = shallow${jsxName}(mockProps);
+  //   wrapper.find('[data-ref="fillMeIn!"]').simulate('click');
+
+  //   expect(mockProps.history.push).toHaveBeenCalledWith('fillMeIn!');
   // });
 });
 
