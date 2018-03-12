@@ -1,5 +1,6 @@
 Bootstrap React components and containers in seconds using react-component-scaffold's command line interface.
 
+![](https://github.com/jenjwong/react-component-scaffold/blob/master/scaffold.gif)
 ## Getting Started
 
 `npm i react-component-scaffold -g`
