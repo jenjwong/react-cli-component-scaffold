@@ -122,7 +122,6 @@ import {makeShallowRender} from 'test/helpers/testHelper';
 import {${jsxName}Container} from './${jsxName}Container';
 // import ${jsxName} from 'components/${jsxName}';
 
-const shallow${jsxName}Container = makeShallowRender(${jsxName}Container);
 
 describe('<${jsxName}Container />', () => {
   const mockProps = '';
