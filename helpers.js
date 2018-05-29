@@ -23,9 +23,15 @@ function component(jsxName) {
 }
 
 function makeComponentFiles(jsxName) {
+  const scssName = jsxName[0].toLowerCase() + jsxName.slice(1);
+  const scssSelectorName = jsxName
+    .split(/(?=[A-Z])/)
+    .join("-")
+    .toLowerCase();
+
   fs.writeFileSync(
     `${basePath}/knowledge-web/src/app/components/${jsxName}/${jsxName}.jsx`,
-    componentTemplate(jsxName),
+    componentTemplate(jsxName, scssName, scssSelectorName),
     "utf8"
   );
   fs.writeFileSync(
@@ -34,8 +40,8 @@ function makeComponentFiles(jsxName) {
     "utf8"
   );
   fs.writeFileSync(
-    `${basePath}/knowledge-web/src/app/components/${jsxName}/${jsxName}.scss`,
-    scssTemplate(jsxName),
+    `${basePath}/knowledge-web/src/app/components/${jsxName}/${scssName}.scss`,
+    scssTemplate(scssSelectorName),
     "utf8"
   );
   fs.writeFileSync(
@@ -46,9 +52,12 @@ function makeComponentFiles(jsxName) {
 }
 
 function container(jsxName) {
-  exec(`mkdir ${basePath}/knowledge-web/src/app/containers/${jsxName}Container`, () => {
-    makeContainerFiles(jsxName);
-  });
+  exec(
+    `mkdir ${basePath}/knowledge-web/src/app/containers/${jsxName}Container`,
+    () => {
+      makeContainerFiles(jsxName);
+    }
+  );
 }
 
 function makeContainerFiles(jsxName) {
