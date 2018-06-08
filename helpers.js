@@ -5,8 +5,6 @@ const path = require("path");
 
 const pathName = process.cwd();
 
-const basePath = pathName.match(/.+?(?=\/knowledge-web)/);
-
 const {
   scssTemplate,
   indexTemplate,
@@ -17,7 +15,7 @@ const {
 } = require("./templates.js");
 
 function component(jsxName) {
-  exec(`mkdir ${basePath}/knowledge-web/src/app/components/${jsxName}`, () => {
+  exec(`mkdir ./components/${jsxName}`, () => {
     makeComponentFiles(jsxName);
   });
 }
@@ -30,22 +28,22 @@ function makeComponentFiles(jsxName) {
     .toLowerCase();
 
   fs.writeFileSync(
-    `${basePath}/knowledge-web/src/app/components/${jsxName}/${jsxName}.jsx`,
+    `./components/${jsxName}/${jsxName}.jsx`,
     componentTemplate(jsxName, scssName, scssSelectorName),
     "utf8"
   );
   fs.writeFileSync(
-    `${basePath}/knowledge-web/src/app/components/${jsxName}/${jsxName}.spec.js`,
+    `./components/${jsxName}/${jsxName}.spec.js`,
     componentTestTemplate(jsxName),
     "utf8"
   );
   fs.writeFileSync(
-    `${basePath}/knowledge-web/src/app/components/${jsxName}/${scssName}.scss`,
+    `./components/${jsxName}/${scssName}.scss`,
     scssTemplate(scssSelectorName),
     "utf8"
   );
   fs.writeFileSync(
-    `${basePath}/knowledge-web/src/app/components/${jsxName}/index.js`,
+    `./components/${jsxName}/index.js`,
     indexTemplate(jsxName),
     "utf8"
   );
@@ -53,7 +51,7 @@ function makeComponentFiles(jsxName) {
 
 function container(jsxName) {
   exec(
-    `mkdir ${basePath}/knowledge-web/src/app/containers/${jsxName}Container`,
+    `mkdir ./containers/${jsxName}Container`,
     () => {
       makeContainerFiles(jsxName);
     }
@@ -62,17 +60,17 @@ function container(jsxName) {
 
 function makeContainerFiles(jsxName) {
   fs.writeFileSync(
-    `${basePath}/knowledge-web/src/app/containers/${jsxName}Container/${jsxName}Container.jsx`,
+    `./containers/${jsxName}Container/${jsxName}Container.jsx`,
     containerTemplate(jsxName),
     "utf8"
   );
   fs.writeFileSync(
-    `${basePath}/knowledge-web/src/app/containers/${jsxName}Container/${jsxName}Container.spec.js`,
+    `./containers/${jsxName}Container/${jsxName}Container.spec.js`,
     containerTestTemplate(jsxName),
     "utf8"
   );
   fs.writeFileSync(
-    `${basePath}/knowledge-web/src/app/containers/${jsxName}Container/index.js`,
+    `./containers/${jsxName}Container/index.js`,
     indexTemplate(`${jsxName}Container`),
     "utf8"
   );
