@@ -1,28 +1,23 @@
-const componentTemplate = (jsxName, scssName, scssSelectorName) => `// @flow
-import styles from './${scssName}.scss';
+const componentTemplate = (jsxName, scssName, scssSelectorName) => `import React from 'react'
+import './${scssName}.css';
 
-type Props = {
-//   fillInProps: any
-};
-
-@cssModule(styles)
-export default class ${jsxName} extends React.PureComponent<Props> {
-  render() {
-    return <div styleName="${scssSelectorName}">${jsxName} Component</div>;
-  }
+const ${jsxName} = () => {
+  return (
+    <div className="${scssSelectorName}">
+      ${jsxName} Component
+    </div>
+  )
 }
+
+export default ${jsxName} 
 
 `;
 
-const scssTemplate = scssSelectorName => `@import '~sass-mq';
-@import '~styles/shared';
+const scssTemplate = scssSelectorName => `@import "../../scss/mixins";
 
 .${scssSelectorName} {
-  border: solid blue 1px;
+
 }
-
-@include mq($from: $mobile-xl) {}
-
 `;
 
 const indexTemplate = jsxName => `import ${jsxName} from './${jsxName}';
@@ -165,9 +160,7 @@ describe('<${jsxName} />', () => {
 
 `;
 
-const containerTemplate = jsxName => `// @flow
-
-import {connect} from 'react-redux';
+const containerTemplate = jsxName => `import {connect} from 'react-redux';
 // import ${jsxName} from 'components/${jsxName}';
 type Props = {};
 
