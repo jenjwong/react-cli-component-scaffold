@@ -15,7 +15,7 @@ const {
 } = require("./templates.js");
 
 function component(jsxName) {
-  exec(`mkdir ./components/${jsxName}`, () => {
+  exec(`mkdir ./${jsxName}`, () => {
     makeComponentFiles(jsxName);
   });
 }
@@ -28,22 +28,17 @@ function makeComponentFiles(jsxName) {
     .toLowerCase();
 
   fs.writeFileSync(
-    `./components/${jsxName}/${jsxName}.jsx`,
+    `./${jsxName}/${jsxName}.jsx`,
     componentTemplate(jsxName, scssName, scssSelectorName),
     "utf8"
   );
   fs.writeFileSync(
-    `./components/${jsxName}/${jsxName}.spec.js`,
-    componentTestTemplate(jsxName),
-    "utf8"
-  );
-  fs.writeFileSync(
-    `./components/${jsxName}/${scssName}.scss`,
+    `./${jsxName}/${scssName}.scss`,
     scssTemplate(scssSelectorName),
     "utf8"
   );
   fs.writeFileSync(
-    `./components/${jsxName}/index.js`,
+    `./${jsxName}/index.js`,
     indexTemplate(jsxName),
     "utf8"
   );
